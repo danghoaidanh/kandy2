@@ -1,0 +1,161 @@
+.div-button-custom{
+	margin-top: 5px;
+	margin-left: -20px;
+	padding-right: 0px;
+
+
+}
+
+.button-custom{
+	border-style: solid;;
+	border-width: 1px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	margin-left: -10px;
+	margin-top: 0px;
+	padding-right: 5px;
+}
+.callee-input{
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.input-custom{
+border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.control-button-group{
+	background-color: #ffffff;
+}
+
+.show-after-call{
+	margin-left: 17px;
+	margin-top: 10px;
+}
+
+.control-button{
+	margin: -2px;
+}
+
+.control-button{
+
+}
+
+.control-btn-mute{
+	border-style: solid;;
+	border-width: 1px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+.control-btn-hold{
+	border-style: solid;;
+	border-width: 1px;
+	border-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+.control-btn-video{
+	border-style: solid;;
+	border-width: 1px;
+	border-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+.control-btn-acceptCall{
+	border-style: solid;;
+	border-width: 1px;
+	border-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+.control-btn-declineCall{
+	border-style: solid;;
+	border-width: 1px;
+	border-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.control-btn-endCall{
+	border-style: solid;
+	border-width: 1px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+
+/*screenahare button css*/
+.control-btn-screenshare{
+border-style: solid;
+	border-width: 1px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+#recieved-image img{
+	height: 150;
+	width: 50%;
+}
+
+/*directory css*/
+.btn-retrieve-directory{
+	margin: 0px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+.retrieve-directory-container{
+	padding:0px;
+}
+.search-directory-form{
+	padding-right:0;
+}
+.search-directory-form input{
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.row-directory{
+	margin-bottom: 10px;
+}
+
+/*.container-button-right{
+width: 100%;
+height: 100%;
+margin: 0 0 0 0;
+position: absolute;
+
+
+}*/
+
+.button-right{
+margin: 0 0 -30px 0;
+}
+.no-padding-left{
+padding-left: 0;
+}
+.no-padding-right{
+padding-right: 0;
+}
+
+.control-btn-end{
+border-top-left-radius: 0;
+border-bottom-left-radius: 0;
+
+}
+.control-btn-begin{
+border-top-right-radius: 0;
+border-bottom-right-radius: 0;
+
+}
+
+.playRecordedVideo{
+    margin: 10px 0 0 -2px;
+    
+}
+#recorded{
+    margin-bottom: 7px;
+    border-style: solid;
+        border-radius: 5px;
+}

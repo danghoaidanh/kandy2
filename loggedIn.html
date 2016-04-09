@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HelloKandy</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="https://kandy-portal.s3.amazonaws.com/public/javascript/kandy/2.5.0/kandy.js"></script>
+
+	<script type="text/javascript" src="public/js/my-kandy-script-loggedin.js"></script>
+
+</head>
+<body>
+
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6 loggedin hidden="" ">
+  <h1>Welcome to Kandy Phone</h1>
+  
+  
+<hr>
+<div class="alert alert-success hidden messages" >
+<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Succeeded!</strong>
+</div>
+<div class="alert alert-danger hidden messagesFailed">
+<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong></strong>
+</div>
+  	<table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td>Username</td>
+        <td>Password</td>
+       
+      </tr>
+      <tr>
+        <td><p id="username-loggedin"></p></td>
+        <td>*************</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  <form action="index.html">
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="button" class="btn btn-default" onclick="toggleLogout();">Logout</button>
+    </div>
+  </div>
+  </form>
+  <fieldset>
+    <legend>Call Management</legend>
+
+    <!-- User input: Callee field. -->
+    Callee: <input type="text" id="callee"/>
+
+    <!-- User input: Handle call buttons. -->
+    <input type="button" value="Make Call" id="make-call" onclick="startCall();"/>
+
+    <input type="button" value="Mute/Unmute Call" id="mute-call" onclick="toggleMute();" disabled/>
+
+    <input type="button" value="Hold/Unhold Call" id="hold-call" onclick="toggleHold();" disabled/>
+
+    <input type="button" value="Show/Hide Video" id="show-video" onclick="toggleVideo();"/>
+
+    <input type="button" value="End Call" id="end-call" onclick="endCall();" disabled/>
+
+    <input type="button" value="Accept Call" id="accept-call" onclick="acceptCall();" disabled/>
+
+    <input type="button" value="Decline Call" id="decline-call" onclick="declineCall();" disabled/>
+</fieldset>
+
+<fieldset>
+    <legend>Messages</legend>
+
+    <!-- Message output container. -->
+    <div id="messages"> </div>
+</fieldset>
+
+<!-- Media containers. -->
+Remote video: <div id="remote-container"></div>
+
+Local video: <div id="local-container"></div>
+
+  </div> <!-- and the loggedin form -->
+  <div class="col-md-6 loginform hidden">
+  
+  </div>
+  <div class="col-md-3"></div>
+</div>
+
+
+
+
+
+	
+	
+</body>
+</html>

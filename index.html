@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HelloKandy</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+
+
+    <link rel="stylesheet" type="text/css" href="public/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="public/css/left.css">
+    <link rel="stylesheet" type="text/css" href="public/css/mid-content.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">KANDY</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li class="dropdown hidden">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Page 1-1</a></li>
+                        <li><a href="#">Page 1-2</a></li>
+                        <li><a href="#">Page 1-3</a></li>
+                    </ul>
+                </li>
+                <li class="hidden"><a href="#">Page 2</a></li>
+                <li class="hidden"><a href="#">Page 3</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up<p
+                        id="username-loggedin"></p></a></li>
+
+                <li class="user-name-show hidden"><p id="username-loggedin-nav"></p></li>
+                <li class="user-name-logout hidden">
+                    <button type="button" class="btn btn-info btn-sm logout-button" onclick="toggleLogout();"><span
+                            class="glyphicon glyphicon-log-out"></span> Logout
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="row">
+    <div class="col-sm-3">
+        <h4 style="color: blue;">Use below info to login:</h4>
+        <br>
+        User1: tom@kandy.tma.com.vn
+        <br>
+        Pwd1: KanDy@123
+        <hr>
+        User2: marry@kany.tma.com.vn
+        <br>
+        Pwd2: KanDy@123
+        <br>
+        <hr>
+        <h4>Contact info:</h4>
+        <author class="author">Skype: emailladanh</author>
+        <br>
+        <author class="author">Email: dhdanh@tma.com.vn</author>
+        <br>
+        <author class="author">CompanySite: www.tma.com.vn</author>
+        <br>
+
+
+    </div>
+    <!-- Login IN OK xxx -->
+    <div class="col-sm-6 loggedin  hidden">
+        <h1>Welcome to Kandy Phone</h1>
+
+
+        <hr>
+        <div class="alert alert-success hidden messages">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong></strong>
+        </div>
+        <div class="alert alert-danger hidden messagesFailed">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong></strong>
+        </div>
+        <!-- Dynamic tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">IP CALLS</a></li>
+            <li><a data-toggle="tab" href="#menu1">MESSAGES</a></li>
+            <li><a data-toggle="tab" href="#menu2">CHATGROUP</a></li>
+            <li><a data-toggle="tab" href="#menu3">JSONMSG</a></li>
+            <li><a data-toggle="tab" href="#menu4">FileShare</a></li>
+            <li><a data-toggle="tab" href="#menu5">AddressB</a></li>
+            <li><a data-toggle="tab" href="#menu6">DomainDirectory</a></li>
+            <li><a data-toggle="tab" href="#menu7">Sessions</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+
+                <legend>Call Management</legend>
+
+                <!-- User input: Callee field. -->
+                <div class="col-xs-12">
+                    <div class="col-xs-10 ">
+                        <label for="callee">Username:</label>
+                        <input class="form-control callee-input" type="email" id="callee"
+                               placeholder="YourUsername@domain.com" required>
+
+                    </div>
+                    <div class="col-xs-2 div-button-custom">
+                        <label for="make-call"></label>
+                        <button class="btn btn-primary btn-block button-custom" type="button" id="make-call"
+                                onclick="startCall();">CALL
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Control buttons group-->
+                <div class="col-xs-12 form-group show-after-call">
+                    <div class="control-button-group">
+
+                        <button class="btn btn-info control-button control-btn-mute" id="mute-call"
+                                onclick="toggleMute();" disabled>
+                            <span class="mute">Mute</span>
+                            <span class="unmute hidden">Unmute</span>
+                        </button>
+                        <button class="btn btn-info control-button control-btn-hold " id="hold-call"
+                                onclick="toggleHold();" disabled>
+                            <span class="hold">Hold</span>
+                            <span class="unhold hidden">Unhold</span>
+                        </button>
+                        <button class="btn btn-info control-button control-btn-video " id="show-video"
+                                onclick="toggleVideo();">
+                            <span class="showvideo">Show Video</span>
+                            <span class="unshowvideo hidden">Hide Video</span>
+                        </button>
+                        <button class="btn btn-info control-button control-btn-acceptCall" id="accept-call"
+                                onclick="acceptCall();" disabled>
+                            <span class="answer">Answer</span>
+
+                        </button>
+                        <button class="btn btn-info control-button control-btn-declineCall" id="decline-call"
+                                onclick="declineCall();" disabled>
+                            <span class="decline">Decline</span>
+
+                        </button>
+
+                        <button class="btn btn-info control-button control-btn-screenshare" id="screensharing"
+                                onclick="toggleScreensharing();" disabled>
+                            <span class="offscreensharing hidden">Off Screensharing</span>
+                            <span class="onscreensharing">On Screensharing</span>
+
+                        </button>
+
+
+                        <button class="btn btn-danger control-button control-btn-endCall" id="end-call"
+                                onclick="endCall();" disabled>
+                            <span class="end">End</span>
+
+                        </button>
+
+                    </div>
+
+
+                </div> <!-- End Control buttons group-->
+                <!-- verify speech path group -->
+                <div class="col-xs-12 form-group show-after-call">
+                    <div class="control-button-group">
+                        <button class="btn btn-primary control-button " id="play-audio" onclick="playAudioToggle();" >PlayInputStream</button>
+                        <input type="file" class="btn btn-primary hidden"/>
+                        <div class="form-group playRecordedVideo">
+                            <video id="gum" autoplay muted class="hidden"></video>
+                            <video id="recorded" autoplay loop width="500" height="40"></video>
+                        </div>
+
+
+                        <div>
+                            <button id="record" class="btn btn-primary control-button control-btn-begin">Start Recording</button>
+                            <button id="play" disabled class="btn btn-primary control-button control-btn-end">Play
+                            </button>
+                            <button id="download" disabled class="btn btn-primary control-button control-btn-end">
+                                Download
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- User input: Handle call buttons. -->
+                <!-- Media containers. -->
+                Remote video:
+                <div id="remote-container"></div>
+
+                Local video:
+                <div id="local-container"></div>
+
+
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <h3>Messages</h3>
+                <fieldset>
+                    <legend>Send Messages</legend>
+
+                    <!-- User input: Recipient and message text fields. -->
+                    Recipient: <input type="text" id="recipient"/>
+
+                    Message: <textarea id="messageBox"> </textarea>
+
+                    <!-- User input: Send button. -->
+                    <input type="button" value="Send Message" onclick="sendMessage();"/>
+                </fieldset>
+                <fieldset>
+                    <legend>Chat</legend>
+                    <div id="chat-messages"></div>
+                </fieldset>
+
+
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <h3>Chat to Group</h3>
+                <fieldset>
+                    <legend>Group Management</legend>
+
+                    <!-- Create group: Button and text field for name. -->
+                    <div>
+                        <input type="button" value="Create " onclick="createGroup();"/>
+                        Group Name: <input type="text" id="create-group-name"/>
+                    </div>
+
+                    <!-- Update group: Button and text fields for id and name. -->
+                    <div>
+                        <input type="button" value="Update" onclick="updateGroup();"/>
+                        Group ID: <input type="text" id="update-group-id"/>
+                        Group Name: <input type="text" id="update-group-name"/>
+                    </div>
+
+                    <!-- Delete group: Button and text field for id. -->
+                    <div>
+                        <input type="button" value="Delete" onclick="deleteGroup();"/>
+                        Group ID: <input type="text" id="delete-group-id"/>
+                    </div>
+
+                </fieldset>
+                <fieldset>
+                    <legend>Membership Actions</legend>
+
+                    <!-- Add to group: Button and text fields for id and members. -->
+                    <div>
+                        <input type="button" value="Add to Group" onclick="addMembers();"/>
+                        Group ID: <input type="text" id="add-group-id"/>
+                        Users: <input type="text" id="add-members"/>
+                    </div>
+
+                    <!-- Remove from group: Button and text fields for id and members. -->
+                    <div>
+                        <input type="button" value="Remove from Group" onclick="removeMembers();"/>
+                        Group ID: <input type="text" id="remove-group-id"/>
+                        Users: <input type="text" id="remove-members"/>
+                    </div>
+
+                </fieldset>
+                <fieldset>
+                    <legend>Group Info</legend>
+
+                    <!-- Get group list: Button. -->
+                    <div>
+                        <input type="button" value="Get Groups" onclick="getGroups();"/>
+                    </div>
+
+                    <!-- Get group info: Button abd text field for id. -->
+                    <div>
+                        <input type="button" value="Get Group Info" onclick="getInfo();"/>
+                        Group ID: <input type="text" id="info-group-id"/>
+                    </div>
+
+                    <!-- Group retrieval. For outputting the info. -->
+                    <div id="group-info"> Group Info:</div>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Messages</legend>
+                    <!-- Application log. -->
+                    <div id="log"></div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Chat</legend>
+
+                    <!-- Group messaging: Button and text fields for id and message. -->
+                    <div>
+                        Group ID: <input type="text" id="chat-group-id"/>
+                        Message: <input type="text" id="chat-message"/>
+                        <input type="button" value="Send" onclick="sendMessageToGroup();"/>
+
+                        <div id="g-chat-messages"></div>
+                    </div>
+
+                </fieldset>
+
+
+            </div>
+            <div id="menu3" class="tab-pane fade">
+                <!-- json mesg from her -->
+                <!-- User input: Recipient and Video URL text fields, and Send button. -->
+                <fieldset>
+                    <legend>Send Message</legend>
+
+                    <div>
+                        Recipient: <input type="text" id="json-recipient"/>
+
+                        YouTube URL: <input type="text" id="json-youtube-video"/>
+
+                        <input type="button" value="Send Message" onclick="sendJSONMessage();"/>
+                    </div>
+                </fieldset>
+
+                <!-- Message and "Command" log. -->
+                <fieldset>
+                    <legend>Messages</legend>
+                    <div id="json-messages"></div>
+                </fieldset>
+
+            </div> <!-- end menu3 -->
+            <div id="menu4" class="tab-pane fade"> <!-- begin menu 4 file share-->
+                <!-- User input: Recipient, file input, and button. -->
+                <fieldset>
+                    <legend>Share an Image</legend>
+                    <div class="form-group">
+                        Recipient: <input class="form-control" type="text" id="file-recipient"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="file" id="file-image-input" class="btn btn-info"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="button" value="Send Image" onclick="sendImage();" class="btn btn-success"/>
+                    </div>
+
+
+                </fieldset>
+
+                <!-- Message Log. -->
+                <div id="nouse"> Messages:</div>
+                <!-- sent message will be showed here -->
+                <div id="recieved-image">
+
+                </div>
+                <div id="received-image-download">
+
+                </div>
+            </div> <!-- end menu 4 -->
+            <div id="menu5" class="tab-pane fade">
+                <!-- begin menu5 adderess book -->
+                <!-- User input: Text boxes for contact information. -->
+                <fieldset>
+                    <legend>Adding a Contact</legend>
+
+                    <div role="form">
+                        <div class="form-group">
+                            <label for="address-username">Username:</label>
+                            <input class="form-control" type="text" id="address-username"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="address-firstName">First Name:</label>
+                            <input class="form-control" type="text" id="address-firstName"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="address-lastName">
+                                Last Name:
+                            </label>
+                            <input class="form-control" type="text" id="address-lastName"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="favoriteColor">Favorite Color: </label>
+                            <input class="form-control" type="text" id="favoriteColor"/>
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-success" type="button" value="Add Contact" onClick="addContact();"/>
+                        </div>
+
+                    </div>
+                </fieldset>
+                <!-- User input: Button. Section for displaying contacts. -->
+                <fieldset>
+                    <legend>Get Contacts</legend>
+
+                    <div role="form">
+                        <div class="form-group">
+                            <input class="btn btn-success" type="button" value="Get Address Book"
+                                   onclick="getAddressBook();"/>
+                        </div>
+                    </div>
+                    <div id="contact-list"> Contacts:</div>
+
+                </fieldset>
+
+                <!-- User input: Text box and button. -->
+                <fieldset>
+                    <legend>Removing a Contact</legend>
+                    <div role="form">
+                        <div class="form-group">
+
+                            <label for="contact_id">Contact Id: </label>
+                            <input class="form-control" type="text" id="contact_id" required/>
+
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-danger" type="button" value="Remove Contact"
+                                   onClick="removeContact();"/>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+
+            </div> <!-- end kmenu5 addressbooks -->
+
+            <div id="menu6" class="tab-pane fade">
+                <!-- begin domain directory -->
+                <fieldset>
+                    <legend>Domain Search</legend>
+
+                    <!-- User input: Search string -->
+                    <div class="fomr-group">
+                        <label for="search-string">Search String:</label>
+                        <div class="row row-directory">
+                            <div class="col-sm-9 search-directory-form">
+                                <input class="form-control" type="text" id="search-string"/>
+                            </div>
+                            <div class="col-sm-3 retrieve-directory-container">
+                                <input class="btn btn-primary control-button btn-retrieve-directory" type="button"
+                                       value="Retrieve Directory" onclick="search('fullDirectory')"/>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- User input: Search buttons. -->
+
+                    <input class="btn btn-info control-button" type="button" value="Search by Full Text"
+                           onclick="search('byFullText')"/>
+                    <input class="btn btn-info control-button" type="button" value="Search by Username"
+                           onclick="search('byUsername')"/>
+                    <input class="btn btn-info control-button" type="button" value="Search by Name"
+                           onclick="search('byName')"/>
+                    <input class="btn btn-info control-button" type="button" value="Search by Phone Number"
+                           onclick="search('byPhoneNumber')"/>
+
+                </fieldset>
+                <!-- Message Log -->
+                <fieldset>
+                    <legend>Messages</legend>
+                    <div id="messages-domia-directory-not-use"></div>
+                </fieldset>
+
+                <!-- Search Result Output -->
+                <fieldset>
+                    <legend>Search Results</legend>
+                    <div id="user-list"></div>
+                </fieldset>
+
+
+                <!-- end domain directory -->
+            </div>
+            <div id="menu7" class="tab-pane fade">
+                <!-- begin sessions html -->
+                <!-- User input: Session Create/Join -->
+                <fieldset>
+                    <legend>Session Create/Join</legend>
+                    <div class="row">
+                        <div class="col-sm-10 ">
+                            <div class="form-group">
+                                <label for="current-session-id">Current Session:</label>
+                                <input class="form-control input-custom" type='text' id='current-session-id' disabled
+                                       placeholder="Created session will show here"/>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-2  div-button-custom">
+                            <!-- <div class="form-group .container-button-right col-sm-12"> -->
+                            <label for="createss"></label>
+                            <input class="btn btn-primary button-custom btn-block" type='button' value='Create'
+                                   id="createss" onclick='createSession();'/>
+                            <!-- </div> -->
+
+
+                        </div>
+                    </div>
+
+
+                    <br>
+
+                    <input type='button' value='Join' onclick='joinSession();'/>
+                    Session Id: <input type='text' id='join-session-id'/>
+                </fieldset>
+
+                <!-- User input: Canvas. -->
+                <canvas id='canvas' width='600' height='200'></canvas>
+
+                <!-- Message Log. -->
+                <div id='log'> Messages:</div>
+                <!-- end of session html -->
+            </div>
+
+        </div> <!-- End Dynamic tbas -->
+
+
+        <fieldset class="hidden">
+            <legend>Messages</legend>
+
+            <!-- Message output container. -->
+            <div id="messages"></div>
+        </fieldset>
+
+
+        <!-- User input: Button. -->
+        <input class="hidden" type="button" value="Initialize Media" onclick="init();"/>
+
+        <!-- Message log. -->
+        <div id="messages" class="hidden"> Messages:</div>
+
+    </div>
+    <!-- Begin the loggedin xxxx form remove hidden class to code UI -->
+    <div class="col-sm-6 loginform">
+
+        <h1>Welcome to Kandy Phone</h1>
+        <hr>
+        <div class="alert alert-success hidden messagesOut">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong></strong>
+        </div>
+        <div class="alert alert-danger hidden messagesFailed">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong></strong>
+        </div>
+        <h3>Login Form</h3>
+        <form class="form-horizontal" role="form" action="#">
+            <div class="form-group hidden">
+                <label class="control-label col-sm-2" for="projectApiKey">ProjectKey</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="projectApiKey" placeholder="Project API Key">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="username">Username:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="username" placeholder="yourname@yourdomain.com">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="pwd" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label><input type="checkbox"> Remember me</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-danger" onclick="toggleLogin();">Login <i
+                            class="fa fa-spinner activate hidden"></i></button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-3"></div>
+    <!-- triu hoi cac external scripts -->
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://kandy-portal.s3.amazonaws.com/public/javascript/kandy/2.5.0/kandy.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+    <script src="https://cdn.webrtc-experiment.com/gumadapter.js"></script>
+    <script src="https://github.com/muaz-khan/RecordRTC/releases/download/5.3.0/RecordRTC.js"></script>
+    <script src="js/main.js"></script>
+    <script src="./ga.js"></script>
+
+    <script type="text/javascript" src="public/js/my-kandy-script.js"></script>
+    <script type="text/javascript" src="public/js/recordAudio.js"></script>
+</body>
+</html>

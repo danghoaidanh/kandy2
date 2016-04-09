@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HelloKandy</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="https://kandy-portal.s3.amazonaws.com/public/javascript/kandy/2.5.0/kandy.js"></script>
+
+	<script type="text/javascript" src="public/js/my-kandy-script.js"></script>
+<link rel="stylesheet" type="text/css" href="public/css/navbar.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">KANDY</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li class="dropdown hidden">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" >Page 1 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+        <li class="hidden"><a href="#">Page 2</a></li>
+        <li class="hidden"><a href="#">Page 3</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="hidden"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up<p id="username-loggedin"></p></a></li>
+
+      <li class="user-name-show hidden"><p id="username-loggedin-nav"></p></li>
+        <li class="user-name-logout hidden"><button type="button" class="btn btn-info btn-sm logout-button" onclick="toggleLogout();"><span class="glyphicon glyphicon-log-out"></span> Logout</button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6 loggedin hidden">
+  <h1>Welcome to Kandy Phone</h1>
+  
+  
+<hr>
+<div class="alert alert-success hidden messages" >
+<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong></strong>
+</div>
+<div class="alert alert-danger hidden messagesFailed">
+<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong></strong>
+</div>
+  	<table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td>Username</td>
+        <td>Control</td>
+       
+      </tr>
+      <tr>
+        <td><p id="username-loggedin"></p></td>
+        <td><button type="button" class="btn btn-info btn-sm" onclick="toggleLogout();"><span class="glyphicon glyphicon-log-out"></span> Logout</button></td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <fieldset>
+    <legend>Call Management</legend>
+
+    <!-- User input: Callee field. -->
+    Callee: <input type="text" id="callee"/>
+
+    <!-- User input: Handle call buttons. -->
+    <input type="button" value="Make Call" id="make-call" onclick="startCall();"/>
+
+    <input type="button" value="Mute/Unmute Call" id="mute-call" onclick="toggleMute();" disabled/>
+
+    <input type="button" value="Hold/Unhold Call" id="hold-call" onclick="toggleHold();" disabled/>
+
+    <input type="button" value="Show/Hide Video" id="show-video" onclick="toggleVideo();"/>
+
+    <input type="button" value="End Call" id="end-call" onclick="endCall();" disabled/>
+
+    <input type="button" value="Accept Call" id="accept-call" onclick="acceptCall();" disabled/>
+
+    <input type="button" value="Decline Call" id="decline-call" onclick="declineCall();" disabled/>
+</fieldset>
+
+<fieldset>
+    <legend>Messages</legend>
+
+    <!-- Message output container. -->
+    <div id="messages"> </div>
+</fieldset>
+
+<!-- Media containers. -->
+Remote video: <div id="remote-container"></div>
+
+Local video: <div id="local-container"></div>
+<!-- User input: Button. -->
+<input type="button" value="Initialize Media" onclick="init();"/>
+
+<!-- Message log. -->
+<div id="messages"> Messages: </div>
+
+  </div> <!-- and the loggedin form -->
+  <div class="col-sm-6 loginform">
+  <h1>Welcome to Kandy Phone</h1>
+<hr>
+<div class="alert alert-success hidden messagesOut" >
+<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong></strong>
+</div>
+<div class="alert alert-danger hidden messagesFailed">
+<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong></strong>
+</div>
+<h3>Login Form</h3>
+  	<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="username">Username:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="username" placeholder="yourname@yourdomain.com">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Password:</label>
+    <div class="col-sm-10"> 
+      <input type="password" class="form-control" id="pwd" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label><input type="checkbox"> Remember me</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="button" class="btn btn-default" onclick="toggleLogin();">Login</button>
+    </div>
+  </div>
+</form>
+  </div>
+  <div class="col-sm-3"></div>	
+</body>
+</html>
